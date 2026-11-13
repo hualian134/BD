@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Birthday Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream-bg: #FFF8F0;
+      --cream-card: #FFFDF9;
+      --strawberry: #FF8FA3;
+      --strawberry-dark: #E05772;
+      --strawberry-light: #FFE5EC;
+      --chocolate: #4A2C2A;
+      --chocolate-soft: #7A524F;
+      --caramel: #FFD166;
+      --mint-cream: #E2ECE9;
+      --lemon-cream: #FFF3B0;
+      --shadow-soft: 0 14px 35px rgba(74, 44, 42, 0.12);
+      --shadow-float: 0 18px 32px rgba(74, 44, 42, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--cream-bg);
+      color: var(--chocolate);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 182, 193, 0.25) 0%, transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(255, 209, 102, 0.25) 0%, transparent 40%),
+        radial-gradient(#f3d9dc 1.5px, transparent 1.5px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    .handwritten {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* ================= SPRINKLE TRANSITION CURTAIN ================= */
+    #transition-curtain {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #FFB6C1 0%, #FFE5EC 50%, #FFF8F0 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.55s ease;
+    }
+
+    #transition-curtain.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .curtain-badge {
+      background: #fff;
+      padding: 20px 36px;
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      color: var(--strawberry-dark);
+      animation: popPulse 0.9s infinite alternate ease-in-out;
+    }
+
+    @keyframes popPulse {
+      from { transform: scale(0.96); }
+      to { transform: scale(1.04); }
+    }
+
+    /* ================= PAGE 1: CREAMY CAKE LOGIN ================= */
+    #login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-bakery-icon {
+      position: absolute;
+      font-size: 2.2rem;
+      opacity: 0.7;
+      user-select: none;
+      animation: ambientFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes ambientFloat {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-18px) rotate(8deg); }
+    }
+
+    .bakery-login-card {
+      width: 100%;
+      max-width: 430px;
+      background: var(--cream-card);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      border: 3px solid #FFE5EC;
+      z-index: 2;
+      animation: cardEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes cardEntrance {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Dripping Strawberry Cream Top */
+    .frosting-header {
+      background: linear-gradient(180deg, #FF9EB1 0%, #FFB6C1 100%);
+      padding: 32px 24px 18px;
+      text-align: center;
+      position: relative;
+      color: #fff;
+    }
+
+    .frosting-header .cake-icon {
+      font-size: 3.2rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 6px rgba(74, 44, 42, 0.15));
+      margin-bottom: 6px;
+    }
+
+    .frosting-header h1 {
+      font-size: 1.85rem;
+      text-shadow: 0 2px 4px rgba(180, 62, 85, 0.25);
+      letter-spacing: 0.3px;
+    }
+
+    .frosting-header p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin-top: 4px;
+    }
+
+    .frosting-drips {
+      display: block;
+      width: 100%;
+      height: 28px;
+      margin-top: -1px;
+    }
+
+    .login-form-body {
+      padding: 18px 30px 32px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--chocolate);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 16px;
+      border: 2px solid #F3D9DC;
+      background: #FFFDFB;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      color: var(--chocolate);
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--strawberry);
+      box-shadow: 0 0 0 4px rgba(255, 143, 163, 0.2);
+    }
+
+    .passcode-hint {
+      font-size: 0.8rem;
+      color: var(--chocolate-soft);
+      margin-top: 5px;
+      display: block;
+    }
+
+    .btn-strawberry {
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #FF94A8 0%, #E85D78 100%);
+      color: #fff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #C4425B, 0 12px 20px rgba(224, 87, 114, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      margin-top: 6px;
+    }
+
+    .btn-strawberry:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #C4425B, 0 15px 24px rgba(224, 87, 114, 0.35);
+    }
+
+    .btn-strawberry:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 0 #C4425B, 0 6px 12px rgba(224, 87, 114, 0.25);
+    }
+
+    .error-msg {
+      color: var(--strawberry-dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* ================= PAGE 2: CELEBRATION STAGE ================= */
+    #celebration-page {
+      display: none;
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 80px;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    /* Top Control Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .pill-btn {
+      background: #fff;
+      border: 2px solid #FFE5EC;
+      color: var(--chocolate);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(74, 44, 42, 0.08);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-btn:hover {
+      background: var(--strawberry-light);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Greeting */
+    .hero-header {
+      text-align: center;
+      padding: 6px 20px 10px;
+      position: relative;
+      z-index: 15;
+    }
+
+    .bunting-strip {
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 6px;
+      user-select: none;
+    }
+
+    .hero-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--chocolate);
+      line-height: 1.15;
+    }
+
+    .hero-header h1 span {
+      color: var(--strawberry-dark);
+      text-decoration: underline wavy var(--caramel) 3px;
+      text-underline-offset: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--chocolate-soft);
+      margin-top: 8px;
+    }
+
+    /* ================= STAGE & FLOATING POLAROIDS WRAPPER ================= */
+    .stage-arena {
+      max-width: 1240px;
+      margin: 10px auto 30px;
+      padding: 10px 20px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr minmax(300px, 420px) 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Cake Stage Container */
+    .cake-stage-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 15;
+    }
+
+    .cake-stage {
+      width: 320px;
+      height: 360px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: visible;
+    }
+
+    /* Plate / Cake Stand */
+    .cake-plate-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .cake-plate-group.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .plate-top {
+      width: 290px;
+      height: 18px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #EDE4E0 100%);
+      border-radius: 50%;
+      box-shadow: 0 6px 14px rgba(74, 44, 42, 0.16), inset 0 -3px 5px rgba(0, 0, 0, 0.06);
+      border: 2px solid #F7EFEA;
+    }
+
+    .plate-pedestal {
+      width: 76px;
+      height: 26px;
+      background: linear-gradient(90deg, #E6DCD7 0%, #FFFFFF 45%, #DFD3CD 100%);
+      clip-path: polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
+      margin-top: -4px;
+    }
+
+    .plate-base {
+      width: 135px;
+      height: 12px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #E2D6D0 100%);
+      border-radius: 999px;
+      box-shadow: 0 5px 10px rgba(74, 44, 42, 0.15);
+    }
+
+    /* Cake Layers Stack */
+    .cake-layers-stack {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: -8px;
+      z-index: 3;
+      position: relative;
+    }
+
+    .cake-layer {
+      position: relative;
+      border-radius: 16px 16px 8px 8px;
+      opacity: 0;
+      transform: translateY(-480px);
+      box-shadow: inset 0 -8px 14px rgba(74, 44, 42, 0.12), 0 4px 10px rgba(74, 44, 42, 0.1);
+    }
+
+    /* Layer 1: Bottom Vanilla & Confetti Sponge */
+    .layer-bottom {
+      width: 230px;
+      height: 76px;
+      background: linear-gradient(180deg, #FFE8C2 0%, #F7CE94 100%);
+      border: 2px solid #EBC082;
+      z-index: 1;
+    }
+
+    .layer-bottom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+      background: #FFFDF9;
+      border-radius: 14px 14px 10px 10px;
+      box-shadow: 0 3px 0 rgba(235, 192, 130, 0.5);
+    }
+
+    /* Layer 2: Middle Strawberry Cream */
+    .layer-middle {
+      width: 176px;
+      height: 66px;
+      background: linear-gradient(180deg, #FFB6C1 0%, #FF8FA3 100%);
+      border: 2px solid #F0788E;
+      margin-bottom: -3px;
+      z-index: 2;
+    }
+
+    .layer-middle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 18px;
+      background: #FFF0F3;
+      border-radius: 14px 14px 10px 10px;
+    }
+
+    /* Layer 3: Top Chocolate Ganache */
+    .layer-top {
+      width: 124px;
+      height: 56px;
+      background: linear-gradient(180deg, #6E433F 0%, #4A2C2A 100%);
+      border: 2px solid #3B211F;
+      margin-bottom: -3px;
+      z-index: 3;
+    }
+
+    .layer-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: #FFF8F0;
+      border-radius: 14px 14px 8px 8px;
+    }
+
+    /* Decorative Sprinkles & Cherries on Layers */
+    .layer-decor {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 14px 14px 0;
+      font-size: 0.85rem;
+      user-select: none;
+    }
+
+    /* Drop & Bounce Animation Class */
+    .cake-layer.dropped {
+      animation: dropLayerBounce 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes dropLayerBounce {
+      0% {
+        opacity: 1;
+        transform: translateY(-420px) scaleY(1.08) scaleX(0.94);
+      }
+      58% {
+        opacity: 1;
+        transform: translateY(0) scaleY(0.86) scaleX(1.08);
+      }
+      76% {
+        opacity: 1;
+        transform: translateY(-20px) scaleY(1.04) scaleX(0.97);
+      }
+      90% {
+        opacity: 1;
+        transform: translateY(0) scaleY(0.95) scaleX(1.03);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1) scaleX(1);
+      }
+    }
+
+    /* Candles on Top Tier */
+    .candles-row {
+      display: flex;
+      gap: 18px;
+      margin-bottom: -2px;
+      z-index: 4;
+      opacity: 0;
+      transform: scale(0.3) translateY(15px);
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .candles-row.lit {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .candle {
+      width: 10px;
+      height: 34px;
+      background: repeating-linear-gradient(
+        45deg,
+        #FFD166,
+        #FFD166 5px,
+        #FF8FA3 5px,
+        #FF8FA3 10px
+      );
+      border-radius: 4px 4px 2px 2px;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .flame {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 18px;
+      background: radial-gradient(circle at 50% 70%, #FFF 10%, #FFD166 55%, #FF6B35 100%);
+      border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+      box-shadow: 0 0 14px #FFD166, 0 0 24px rgba(255, 165, 0, 0.6);
+      animation: flicker 0.35s infinite alternate ease-in-out;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .flame.extinguished {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.1);
+      animation: none;
+    }
+
+    .smoke {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .smoke.puff {
+      animation: smokeRise 1.2s ease-out forwards;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(0.95) rotate(-3deg); }
+      to { transform: translateX(-50%) scale(1.06) rotate(3deg); }
+    }
+
+    @keyframes smokeRise {
+      0% { opacity: 0.9; transform: translateX(-50%) translateY(0) scale(0.7); }
+      100% { opacity: 0; transform: translateX(-30%) translateY(-28px) scale(1.4); }
+    }
+
+    /* Cake Action Controls */
+    .cake-controls {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+    }
+
+    .cake-controls.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-blow {
+      background: linear-gradient(180deg, #FFD166 0%, #F4B427 100%);
+      color: var(--chocolate);
+      border: none;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #C98E10, 0 10px 18px rgba(244, 180, 39, 0.3);
+      transition: transform 0.15s ease;
+    }
+
+    .btn-blow:hover {
+      transform: translateY(-2px);
+    }
+
+    .toast-banner {
+      background: #FFFDF9;
+      border: 2px dashed var(--strawberry);
+      border-radius: 16px;
+      padding: 12px 18px;
+      max-width: 330px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--chocolate);
+      box-shadow: var(--shadow-soft);
+      display: none;
+      animation: cardEntrance 0.45s ease;
+    }
+
+    /* ================= FLOATING PHOTO MEMORY GALLERY ================= */
+    .polaroid-column {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .polaroid-card {
+      background: #FFFFFF;
+      padding: 12px 12px 18px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-float);
+      width: 210px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: polaroidBob 5.5s ease-in-out infinite;
+    }
+
+    .polaroid-card:nth-child(even) {
+      animation-delay: -2.4s;
+      animation-duration: 6.4s;
+    }
+
+    @keyframes polaroidBob {
+      0%, 100% { transform: translateY(0px) rotate(var(--tilt, -3deg)); }
+      50% { transform: translateY(-12px) rotate(calc(var(--tilt, -3deg) + 2.5deg)); }
+    }
+
+    .polaroid-card:hover {
+      animation-play-state: paused;
+      transform: scale(1.07) rotate(0deg) !important;
+      z-index: 25;
+      box-shadow: 0 22px 40px rgba(74, 44, 42, 0.22);
+    }
+
+    /* Washi Tape Strip */
+    .polaroid-card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 68px;
+      height: 20px;
+      background: rgba(255, 182, 193, 0.75);
+      border-left: 2px dotted rgba(255, 255, 255, 0.7);
+      border-right: 2px dotted rgba(255, 255, 255, 0.7);
+    }
+
+    .polaroid-photo {
+      width: 100%;
+      height: 155px;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.4rem;
+      background: var(--strawberry-light);
+    }
+
+    .polaroid-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--chocolate);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.15;
+    }
+
+    .gallery-toolbar {
+      text-align: center;
+      margin: 10px auto 44px;
+    }
+
+    /* ================= INTERACTIVE WISH CARD WALL ================= */
+    .wish-wall-section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      color: var(--chocolate);
+    }
+
+    .section-heading p {
+      color: var(--chocolate-soft);
+      margin-top: 4px;
+    }
+
+    /* Wish Composer Card */
+    .wish-composer {
+      background: var(--cream-card);
+      border: 3px solid #FFE5EC;
+      border-radius: 24px;
+      padding: 24px;
+      max-width: 680px;
+      margin: 0 auto 38px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .composer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .wish-composer input,
+    .wish-composer textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 2px solid #F3D9DC;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chocolate);
+      background: #fff;
+      outline: none;
+    }
+
+    .wish-composer input:focus,
+    .wish-composer textarea:focus {
+      border-color: var(--strawberry);
+    }
+
+    .wish-composer textarea {
+      resize: vertical;
+      min-height: 82px;
+      margin-bottom: 14px;
+    }
+
+    .picker-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .picker-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .color-swatch {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .color-swatch.selected {
+      border-color: var(--chocolate);
+      transform: scale(1.18);
+    }
+
+    .sticker-btn {
+      background: #FFF8F0;
+      border: 2px solid #F3D9DC;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .sticker-btn.selected {
+      border-color: var(--strawberry-dark);
+      background: var(--strawberry-light);
+      transform: scale(1.12);
+    }
+
+    /* Wish Cards Grid */
+    .wish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 22px;
+    }
+
+    .wish-card {
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(74, 44, 42, 0.08);
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease;
+      animation: cardEntrance 0.45s ease;
+    }
+
+    .wish-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .wish-card.theme-vanilla { background: #FFFDF7; }
+    .wish-card.theme-strawberry { background: #FFE8EE; }
+    .wish-card.theme-lemon { background: #FFF6CC; }
+    .wish-card.theme-mint { background: #E6F4F1; }
+
+    .wish-sticker {
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12));
+    }
+
+    .wish-message {
+      font-family: 'Caveat', cursive;
+      font-size: 1.45rem;
+      line-height: 1.3;
+      color: var(--chocolate);
+      margin-bottom: 16px;
+      word-break: break-word;
+    }
+
+    .wish-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed rgba(74, 44, 42, 0.18);
+      padding-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .wish-author {
+      font-weight: 700;
+      color: var(--chocolate);
+    }
+
+    .reaction-btn {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(224, 87, 114, 0.3);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--strawberry-dark);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .reaction-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* ================= MODALS (LIGHTBOX & ADD MEMORY) ================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(54, 30, 28, 0.62);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #FFFDF9;
+      border-radius: 24px;
+      max-width: 460px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: cardEntrance 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: var(--strawberry-light);
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      color: var(--strawberry-dark);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .lightbox-img-box {
+      width: 100%;
+      height: 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--strawberry-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      margin-bottom: 14px;
+    }
+
+    .lightbox-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 960px) {
+      .stage-arena {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .cake-stage-wrapper {
+        order: -1;
+      }
+
+      .polaroid-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .composer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .polaroid-card {
+        width: 155px;
+        padding: 9px 9px 14px;
+      }
+
+      .polaroid-photo {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sprinkle Curtain Transition -->
+  <div id="transition-curtain">
+    <div class="curtain-badge">🎂 Baking Your Surprise... ✨</div>
+  </div>
+
+  <!-- ================= PAGE 1: CREAMY CAKE LOGIN ================= -->
+  <section id="login-page">
+    <span class="floating-bakery-icon" style="top: 12%; left: 10%;">🍓</span>
+    <span class="floating-bakery-icon" style="top: 18%; right: 12%; animation-delay: -1.5s;">🧁</span>
+    <span class="floating-bakery-icon" style="bottom: 16%; left: 14%; animation-delay: -3s;">🍰</span>
+    <span class="floating-bakery-icon" style="bottom: 14%; right: 10%; animation-delay: -4.2s;">🕯️</span>
+
+    <div class="bakery-login-card">
+      <div class="frosting-header">
+        <div class="cake-icon">🍰</div>
+        <h1>Sweet Celebrations Await!</h1>
+        <p>Step inside our creamy birthday bakery</p>
+      </div>
+      <!-- SVG Wavy Cream Drips -->
+      <svg class="frosting-drips" viewBox="0 0 430 28" preserveAspectRatio="none">
+        <path d="M0,0 L430,0 L430,10 C410,10 405,25 390,25 C375,25 370,8 350,8 C330,8 325,22 308,22 C290,22 285,6 265,6 C245,6 240,27 220,27 C200,27 195,9 175,9 C155,9 150,24 132,24 C114,24 108,7 88,7 C68,7 62,23 44,23 C26,23 18,9 0,9 Z" fill="#FFB6C1"/>
+      </svg>
+
+      <form class="login-form-body" id="login-form">
+        <div class="form-group">
+          <label for="guest-name">Birthday Star's Name</label>
+          <input type="text" id="guest-name" placeholder="e.g., HWYM" required autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label for="secret-code">Sweet Passcode</label>
+          <input type="password" id="secret-code" placeholder="Enter birthday code" required />
+          <span class="passcode-hint">Hint: Use <strong>Your Birth Date</strong></span>
+        </div>
+        <button type="submit" class="btn-strawberry">Enter the Party ✨</button>
+        <div class="error-msg" id="login-error"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= PAGE 2: CELEBRATION STAGE ================= -->
+  <main id="celebration-page">
+    <canvas id="confetti-canvas"></canvas>
+
+    <header class="top-bar">
+      <button class="pill-btn" id="back-login-btn">← Change Name</button>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="pill-btn" id="music-toggle-btn">🎵 Play Birthday Tune</button>
+        <button class="pill-btn" id="replay-cake-btn">🎂 Replay Cake Drop</button>
+      </div>
+    </header>
+
+    <div class="hero-header">
+      <div class="bunting-strip">🚩🎀🎈🎉🎈🎀🚩</div>
+      <h1>Happy Birthday, <span id="display-name">Friend</span>!</h1>
+      <p class="hero-subtitle">Watch your three-layer creamy cake stack up, explore memories & leave a wish!</p>
+    </div>
+
+    <!-- Center Stage: Floating Polaroids Left + 3-Layer Cake Drop Center + Floating Polaroids Right -->
+    <section class="stage-arena">
+      <div class="polaroid-column" id="polaroid-left"></div>
+
+      <div class="cake-stage-wrapper">
+        <div class="cake-stage">
+          <!-- Candles -->
+          <div class="candles-row" id="candles-row" title="Click to blow out candles!">
+            <div class="candle"><div class="flame"></div><div class="smoke">💨</div></div>
+            <div class="candle"><div class="flame"></div><div class="smoke">💨</div></div>
+            <div class="candle"><div class="flame"></div><div class="smoke">💨</div></div>
+          </div>
+
+          <!-- 3 Cake Layers (column-reverse stacks bottom -> middle -> top) -->
+          <div class="cake-layers-stack">
+            <div class="cake-layer layer-bottom" id="layer-1">
+              <div class="layer-decor">🍓 ✨ 🍓 ✨ 🍓</div>
+            </div>
+            <div class="cake-layer layer-middle" id="layer-2">
+              <div class="layer-decor">🤍 🍒 🤍 🍒</div>
+            </div>
+            <div class="cake-layer layer-top" id="layer-3">
+              <div class="layer-decor">🍫 🌟 🍫</div>
+            </div>
+          </div>
+
+          <!-- Porcelain Cake Plate -->
+          <div class="cake-plate-group" id="cake-plate">
+            <div class="plate-top"></div>
+            <div class="plate-pedestal"></div>
+            <div class="plate-base"></div>
+          </div>
+        </div>
+
+        <div class="cake-controls" id="cake-controls">
+          <button class="btn-blow" id="blow-candles-btn">🌬️ Make a Wish & Blow Candles</button>
+          <div class="toast-banner" id="wish-toast">
+            🥂 <strong>Cheers to another sweet year!</strong> May every day ahead be frosted with joy, laughter, and adventure!
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-column" id="polaroid-right"></div>
+    </section>
+
+    <div class="gallery-toolbar">
+      <button class="pill-btn" id="open-add-memory-btn">📸 + Add Photo Memory to Gallery</button>
+    </div>
+
+    <!-- Interactive Birthday Wish Card Wall -->
+    <section class="wish-wall-section">
+      <div class="section-heading">
+        <h2>💌 Sweet Birthday Wish Wall</h2>
+        <p>Write a warm note, pick a frosting card color, and pin it to the celebration wall</p>
+      </div>
+
+      <form class="wish-composer" id="wish-form">
+        <div class="composer-grid">
+          <input type="text" id="wish-author-input" placeholder="Your Name (e.g., Maya)" required maxlength="30" />
+          <input type="text" id="wish-relation-input" placeholder="Tag (e.g., Bestie, Family, Team)" maxlength="25" />
+        </div>
+        <textarea id="wish-text-input" placeholder="Write your heartfelt birthday wish here..." required maxlength="240"></textarea>
+
+        <div class="picker-row">
+          <div class="picker-group">
+            <span>Frosting:</span>
+            <button type="button" class="color-swatch selected" data-theme="vanilla" style="background: #FFFDF7; border-color: #d8c8b8;" title="Vanilla Cream"></button>
+            <button type="button" class="color-swatch" data-theme="strawberry" style="background: #FFE8EE;" title="Strawberry"></button>
+            <button type="button" class="color-swatch" data-theme="lemon" style="background: #FFF6CC;" title="Lemon Cream"></button>
+            <button type="button" class="color-swatch" data-theme="mint" style="background: #E6F4F1;" title="Mint Frosting"></button>
+          </div>
+
+          <div class="picker-group">
+            <span>Sticker:</span>
+            <button type="button" class="sticker-btn selected" data-sticker="🎂">🎂</button>
+            <button type="button" class="sticker-btn" data-sticker="🍓">🍓</button>
+            <button type="button" class="sticker-btn" data-sticker="✨">✨</button>
+            <button type="button" class="sticker-btn" data-sticker="🎈">🎈</button>
+            <button type="button" class="sticker-btn" data-sticker="🥂">🥂</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-strawberry">Pin Wish Card to Wall 📌</button>
+      </form>
+
+      <div class="wish-grid" id="wish-grid"></div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal for Polaroids -->
+  <div class="modal-backdrop" id="lightbox-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="close-lightbox">✕</button>
+      <div class="lightbox-img-box" id="lightbox-media"></div>
+      <h3 class="handwritten" id="lightbox-caption" style="font-size: 1.8rem; text-align: center;"></h3>
+      <p id="lightbox-story" style="text-align: center; color: var(--chocolate-soft); margin-top: 6px; font-size: 0.95rem;"></p>
+      <div class="lightbox-nav">
+        <button class="pill-btn" id="prev-photo-btn">← Previous</button>
+        <button class="pill-btn" id="next-photo-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Memory Modal -->
+  <div class="modal-backdrop" id="add-memory-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="close-add-memory">✕</button>
+      <h3 style="margin-bottom: 14px; font-size: 1.4rem;">📸 Add a Polaroid Memory</h3>
+      <form id="add-memory-form">
+        <div class="form-group">
+          <label for="memory-file">Choose a Photo</label>
+          <input type="file" id="memory-file" accept="image/*" required />
+        </div>
+        <div class="form-group">
+          <label for="memory-caption">Handwritten Caption</label>
+          <input type="text" id="memory-caption" placeholder="e.g., Sunset Coffee & Laughs" required maxlength="40" />
+        </div>
+        <div class="form-group">
+          <label for="memory-story">Memory Note (Optional)</label>
+          <input type="text" id="memory-story" placeholder="e.g., One of our favorite afternoons together!" maxlength="120" />
+        </div>
+        <button type="submit" class="btn-strawberry">Add to Floating Gallery ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* ================= STATE & INITIAL DATA ================= */
+    let memories = [
+      {
+        emoji: '🌅',
+        bg: 'linear-gradient(135deg, #FFE5EC, #FFD166)',
+        img: null,
+        caption: 'Golden Hour Adventures',
+        story: 'Chasing sunsets and laughing until our stomachs hurt.',
+        tilt: '-4deg'
+      },
+      {
+        emoji: '☕',
+        bg: 'linear-gradient(135deg, #FFF3B0, #FFCAD4)',
+        img: null,
+        caption: 'Sunday Bakery Dates',
+        story: 'Testing every croissant and strawberry tart in town.',
+        tilt: '3deg'
+      },
+      {
+        emoji: '🎶',
+        bg: 'linear-gradient(135deg, #E2ECE9, #FFE5EC)',
+        img: null,
+        caption: 'Late Night Roadtrips',
+        story: 'Windows down, favorite playlist on repeat.',
+        tilt: '-3deg'
+      },
+      {
+        emoji: '🌸',
+        bg: 'linear-gradient(135deg, #FFCCD5, #FFF8F0)',
+        img: null,
+        caption: 'Spring Picnic Vibes',
+        story: 'Celebrating little wins under blooming trees.',
+        tilt: '4deg'
+      }
+    ];
+
+    const defaultWishes = [
+      {
+        id: 1,
+        author: 'ZKW',
+        tag: 'BF',
+        message: 'Happy birthday to my favorite person! Life is simply better, brighter, and way more fun with you in it. Here’s to another year of amazing memories together. I love you!',
+        theme: 'strawberry',
+        sticker: '🍓',
+        likes: 5
+      },
+      {
+        id: 2,
+        author: 'ZKW',
+        tag: 'BF',
+        message: 'Happy birthday, my love.',
+        theme: 'vanilla',
+        sticker: '🎂',
+        likes: 8
+      },
+      {
+        id: 3,
+        author: 'ZKW',
+        tag: 'BF',
+        message: 'You bring sunshine into every room you enter. Have the brightest, happiest birthday celebration!',
+        theme: 'lemon',
+        sticker: '✨',
+        likes: 4
+      },
+      {
+        id: 4,
+        author: 'ZKW',
+        tag: 'BF',
+        message: 'Another candle on the cake means another year of blessings. Keep shining your beautiful light!',
+        theme: 'mint',
+        sticker: '🎈',
+        likes: 9
+      }
+    ];
+
+    let wishes = JSON.parse(localStorage.getItem('birthday_wishes_v1')) || defaultWishes;
+    let activeLightboxIndex = 0;
+    let candlesLit = true;
+    let selectedTheme = 'vanilla';
+    let selectedSticker = '🎂';
+
+    /* ================= LOGIN & PAGE TRANSITION ================= */
+    const loginForm = document.getElementById('login-form');
+    const loginPage = document.getElementById('login-page');
+    const celebrationPage = document.getElementById('celebration-page');
+    const curtain = document.getElementById('transition-curtain');
+    const displayNameEl = document.getElementById('display-name');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameVal = document.getElementById('guest-name').value.trim();
+      const codeVal = document.getElementById('secret-code').value.trim();
+      const errorEl = document.getElementById('login-error');
+
+      if (!nameVal || !codeVal) {
+        errorEl.textContent = 'Please enter both a name and party passcode!';
+        return;
+      }
+      if(codeVal !== '13112004') 
+      {
+        errorEl.textContent = 'Oops! That passcode is incorrect';
+        return;
+      }
+
+      errorEl.textContent = '';
+      displayNameEl.textContent = "HWYM";
+
+      // Show sprinkle curtain
+      curtain.classList.add('active');
+
+      setTimeout(() => {
+        loginPage.style.display = 'none';
+        celebrationPage.style.display = 'block';
+        renderPolaroids();
+        renderWishes();
+
+        setTimeout(() => {
+          curtain.classList.remove('active');
+          runCakeDropSequence();
+        }, 450);
+      }, 650);
+    });
+
+    document.getElementById('back-login-btn').addEventListener('click', () => {
+      celebrationPage.style.display = 'none';
+      loginPage.style.display = 'flex';
+      stopMelody();
+    });
+
+    /* ================= THREE-LAYER CAKE DROP SEQUENCE ================= */
+    let dropTimers = [];
+
+    function runCakeDropSequence() {
+      // Clear any previous timers
+      dropTimers.forEach(clearTimeout);
+      dropTimers = [];
+
+      const plate = document.getElementById('cake-plate');
+      const layer1 = document.getElementById('layer-1');
+      const layer2 = document.getElementById('layer-2');
+      const layer3 = document.getElementById('layer-3');
+      const candlesRow = document.getElementById('candles-row');
+      const controls = document.getElementById('cake-controls');
+      const toast = document.getElementById('wish-toast');
+
+      // Reset states
+      plate.classList.remove('visible');
+      [layer1, layer2, layer3].forEach((l) => {
+        l.classList.remove('dropped');
+        void l.offsetWidth; // Force reflow
+      });
+      candlesRow.classList.remove('lit');
+      controls.classList.remove('visible');
+      toast.style.display = 'none';
+
+      // Re-light flames
+      candlesLit = true;
+      document.querySelectorAll('.flame').forEach((f) => f.classList.remove('extinguished'));
+      document.getElementById('blow-candles-btn').textContent = '🌬️ Make a Wish & Blow Candles';
+
+      // Step 1: Plate appears (0.1s)
+      dropTimers.push(setTimeout(() => {
+        plate.classList.add('visible');
+      }, 100));
+
+      // Step 2: Bottom layer drops onto plate (0.55s)
+      dropTimers.push(setTimeout(() => {
+        layer1.classList.add('dropped');
+      }, 550));
+
+      // Step 3: Middle layer drops onto bottom layer (1.25s)
+      dropTimers.push(setTimeout(() => {
+        layer2.classList.add('dropped');
+      }, 1250));
+
+      // Step 4: Top layer drops onto middle layer (1.95s)
+      dropTimers.push(setTimeout(() => {
+        layer3.classList.add('dropped');
+      }, 1950));
+
+      // Step 5: Candles light up + Confetti burst (2.65s)
+      dropTimers.push(setTimeout(() => {
+        candlesRow.classList.add('lit');
+        controls.classList.add('visible');
+        launchConfetti(140);
+      }, 2650));
+    }
+
+    document.getElementById('replay-cake-btn').addEventListener('click', runCakeDropSequence);
+
+    /* Blow Out Candles Interaction */
+    function blowOutCandles() {
+      if (!candlesLit) return;
+      candlesLit = false;
+
+      document.querySelectorAll('.flame').forEach((f) => f.classList.add('extinguished'));
+      document.querySelectorAll('.smoke').forEach((s) => {
+        s.classList.remove('puff');
+        void s.offsetWidth;
+        s.classList.add('puff');
+      });
+
+      document.getElementById('blow-candles-btn').textContent = '✨ Wish Sent to the Stars!';
+      document.getElementById('wish-toast').style.display = 'block';
+      launchConfetti(90);
+    }
+
+    document.getElementById('blow-candles-btn').addEventListener('click', blowOutCandles);
+    document.getElementById('candles-row').addEventListener('click', blowOutCandles);
+
+    /* ================= FLOATING POLAROID GALLERY & LIGHTBOX ================= */
+    function renderPolaroids() {
+      const leftCol = document.getElementById('polaroid-left');
+      const rightCol = document.getElementById('polaroid-right');
+      leftCol.innerHTML = '';
+      rightCol.innerHTML = '';
+
+      memories.forEach((mem, idx) => {
+        const card = document.createElement('div');
+        card.className = 'polaroid-card';
+        card.style.setProperty('--tilt', mem.tilt || (idx % 2 === 0 ? '-3deg' : '3deg'));
+
+        const mediaHtml = mem.img
+          ? `<img src="${mem.img}" alt="${mem.caption}" />`
+          : `<span>${mem.emoji}</span>`;
+
+        card.innerHTML = `
+          <div class="polaroid-photo" style="background: ${mem.bg || '#FFE5EC'};">
+            ${mediaHtml}
+          </div>
+          <div class="polaroid-caption">${mem.caption}</div>
+        `;
+
+        card.addEventListener('click', () => openLightbox(idx));
+
+        if (idx % 2 === 0) {
+          leftCol.appendChild(card);
+        } else {
+          rightCol.appendChild(card);
+        }
+      });
+    }
+
+    const lightboxModal = document.getElementById('lightbox-modal');
+    function openLightbox(index) {
+      activeLightboxIndex = index;
+      const mem = memories[index];
+      const mediaBox = document.getElementById('lightbox-media');
+      mediaBox.style.background = mem.bg || '#FFE5EC';
+      mediaBox.innerHTML = mem.img
+        ? `<img src="${mem.img}" alt="${mem.caption}" />`
+        : `<span>${mem.emoji}</span>`;
+
+      document.getElementById('lightbox-caption').textContent = mem.caption;
+      document.getElementById('lightbox-story').textContent = mem.story || 'A cherished birthday memory.';
+      lightboxModal.classList.add('open');
+    }
+
+    document.getElementById('close-lightbox').addEventListener('click', () => {
+      lightboxModal.classList.remove('open');
+    });
+
+    document.getElementById('prev-photo-btn').addEventListener('click', () => {
+      activeLightboxIndex = (activeLightboxIndex - 1 + memories.length) % memories.length;
+      openLightbox(activeLightboxIndex);
+    });
+
+    document.getElementById('next-photo-btn').addEventListener('click', () => {
+      activeLightboxIndex = (activeLightboxIndex + 1) % memories.length;
+      openLightbox(activeLightboxIndex);
+    });
+
+    /* Add Custom Memory Upload */
+    const addMemoryModal = document.getElementById('add-memory-modal');
+    document.getElementById('open-add-memory-btn').addEventListener('click', () => {
+      addMemoryModal.classList.add('open');
+    });
+    document.getElementById('close-add-memory').addEventListener('click', () => {
+      addMemoryModal.classList.remove('open');
+    });
+
+    document.getElementById('add-memory-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById('memory-file');
+      const caption = document.getElementById('memory-caption').value.trim();
+      const story = document.getElementById('memory-story').value.trim();
+
+      if (!fileInput.files || !fileInput.files[0]) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        memories.push({
+          img: event.target.result,
+          emoji: '📸',
+          caption,
+          story: story || 'Uploaded just now to the celebration gallery!',
+          tilt: memories.length % 2 === 0 ? '-3.5deg' : '3.5deg'
+        });
+        renderPolaroids();
+        addMemoryModal.classList.remove('open');
+        e.target.reset();
+        launchConfetti(45);
+      };
+      reader.readAsDataURL(fileInput.files[0]);
+    });
+
+    /* ================= INTERACTIVE WISH CARD WALL ================= */
+    document.querySelectorAll('.color-swatch').forEach((swatch) => {
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.color-swatch').forEach((s) => s.classList.remove('selected'));
+        swatch.classList.add('selected');
+        selectedTheme = swatch.dataset.theme;
+      });
+    });
+
+    document.querySelectorAll('.sticker-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sticker-btn').forEach((b) => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedSticker = btn.dataset.sticker;
+      });
+    });
+
+    function saveWishes() {
+      localStorage.setItem('birthday_wishes_v1', JSON.stringify(wishes));
+    }
+
+    function renderWishes() {
+      const grid = document.getElementById('wish-grid');
+      grid.innerHTML = '';
+
+      wishes.forEach((w) => {
+        const card = document.createElement('div');
+        card.className = `wish-card theme-${w.theme}`;
+        card.innerHTML = `
+          <div class="wish-sticker">${w.sticker}</div>
+          <p class="wish-message">“${escapeHtml(w.message)}”</p>
+          <div class="wish-footer">
+            <div>
+              <div class="wish-author">${escapeHtml(w.author)}</div>
+              ${w.tag ? `<small style="color: var(--chocolate-soft);">${escapeHtml(w.tag)}</small>` : ''}
+            </div>
+            <button class="reaction-btn" data-id="${w.id}">💖 ${w.likes}</button>
+          </div>
+        `;
+
+        card.querySelector('.reaction-btn').addEventListener('click', () => {
+          w.likes += 1;
+          saveWishes();
+          renderWishes();
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    document.getElementById('wish-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const author = document.getElementById('wish-author-input').value.trim();
+      const tag = document.getElementById('wish-relation-input').value.trim();
+      const message = document.getElementById('wish-text-input').value.trim();
+
+      if (!author || !message) return;
+
+      wishes.unshift({
+        id: Date.now(),
+        author,
+        tag,
+        message,
+        theme: selectedTheme,
+        sticker: selectedSticker,
+        likes: 1
+      });
+
+      saveWishes();
+      renderWishes();
+      e.target.reset();
+      launchConfetti(60);
+    });
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[m]));
+    }
+
+    /* ================= CONFETTI BURST ENGINE ================= */
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animFrameId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti(count = 100) {
+      const colors = ['#FF8FA3', '#FFD166', '#9BF6FF', '#BDB2FF', '#CAFFBF', '#FFADAD'];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 260,
+          y: canvas.height * 0.35,
+          vx: (Math.random() - 0.5) * 14,
+          vy: Math.random() * -12 - 4,
+          size: Math.random() * 8 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10
+        });
+      }
+      if (!animFrameId) animateConfetti();
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, idx) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.32; // Gravity
+        p.vx *= 0.99;
+        p.rotation += p.vRot;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+
+        if (p.y > canvas.height + 30) particles.splice(idx, 1);
+      });
+
+      if (particles.length > 0) {
+        animFrameId = requestAnimationFrame(animateConfetti);
+      } else {
+        animFrameId = null;
+      }
+    }
+
+    /* ================= WEB AUDIO HAPPY BIRTHDAY MUSIC BOX ================= */
+    let audioCtx = null;
+    let isPlayingMusic = false;
+    let melodyTimeout = null;
+
+    const melodyNotes = [
+      [261.63, 0.35], [261.63, 0.25], [293.66, 0.55], [261.63, 0.55], [349.23, 0.55], [329.63, 0.95],
+      [261.63, 0.35], [261.63, 0.25], [293.66, 0.55], [261.63, 0.55], [392.00, 0.55], [349.23, 0.95],
+      [261.63, 0.35], [261.63, 0.25], [523.25, 0.55], [440.00, 0.55], [349.23, 0.55], [329.63, 0.55], [293.66, 0.95],
+      [466.16, 0.35], [466.16, 0.25], [440.00, 0.55], [349.23, 0.55], [392.00, 0.55], [349.23, 1.1]
+    ];
+
+    function playMelody(index = 0) {
+      if (!isPlayingMusic) return;
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      const [freq, dur] = melodyNotes[index];
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + dur);
+
+      const nextIndex = (index + 1) % melodyNotes.length;
+      melodyTimeout = setTimeout(() => playMelody(nextIndex), dur * 620);
+    }
+
+    function stopMelody() {
+      isPlayingMusic = false;
+      clearTimeout(melodyTimeout);
+      document.getElementById('music-toggle-btn').textContent = '🎵 Play Birthday Tune';
+    }
+
+    document.getElementById('music-toggle-btn').addEventListener('click', () => {
+      if (isPlayingMusic) {
+        stopMelody();
+      } else {
+        isPlayingMusic = true;
+        document.getElementById('music-toggle-btn').textContent = '🔇 Pause Music';
+        playMelody(0);
+      }
+    });
+  </script>
+</body>
+</html>
